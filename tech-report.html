@@ -112,9 +112,72 @@
             font-size: 0.8rem;
             color: #e2e8f0;
         }
+        /* 架构图样式 */
+        .architecture-diagram {
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border: 1px solid #1e293b;
+        }
+        .arch-node, .arch-child {
+            background: #0a0c10;
+            border-radius: 1rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-left: 3px solid #3b82f6;
+        }
+        .arch-children {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+        .arch-child {
+            flex: 1;
+            min-width: 200px;
+            border-left-color: #a855f7;
+            margin-bottom: 0;
+        }
+        .arch-arrow {
+            text-align: center;
+            font-size: 1.8rem;
+            color: #60a5fa;
+            margin: 0.5rem 0;
+        }
+        .arch-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            color: #60a5fa;
+        }
+        .arch-list {
+            margin: 0;
+            padding-left: 1.2rem;
+            color: #94a3b8;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        .arch-list li {
+            margin-bottom: 0.25rem;
+        }
+        .arch-note {
+            margin-top: 1rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid #1e293b;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+        }
         @media (max-width: 640px) {
             .report-header h1 { font-size: 1.8rem; }
             .report-section h2 { font-size: 1.4rem; }
+            .arch-children {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            .arch-child {
+                margin-bottom: 0;
+            }
         }
     </style>
 </head>
@@ -138,41 +201,44 @@
             <p>本系统是一款面向 EVM 兼容链（Ethereum、BSC、Base、Polygon、Arbitrum）与 Solana 链的<strong>实时资产监控与智能分析平台</strong>。通过 WebSocket 长连接与 RPC 轮询混合架构，实现对指定钱包地址的原生币、代币、NFT 的全方位监控，并集成 Telegram、Discord、邮件、语音播报等多渠道推送。系统内置多 AI 提供商（DeepSeek、Moonshot）的智能解读能力，可对每笔交易进行风险评分、资金流向分析与投资建议。此外还提供链上项目追踪（CryptoRank、GeckoTerminal）、新项目发现（RootData 数据集成）、Web3 AI 聊天助手、交易仪表盘、悬浮窗实时通知等高级功能。</p>
         </div>
 
-<div class="architecture-diagram">
-    <div class="arch-node main-process">
-        <div class="arch-title"><i class="fas fa-desktop"></i> 主进程 (main.py)</div>
-        <ul class="arch-list">
-            <li>PyWebView 窗口 (HTML/JS 前端)</li>
-            <li>系统托盘图标 + 悬浮窗管理</li>
-            <li>子进程生命周期管理 (启动/停止/重启)</li>
-            <li>配置文件读写 (JSON) 与热加载</li>
-        </ul>
-    </div>
-    <div class="arch-arrow">▼</div>
-    <div class="arch-children">
-        <div class="arch-child">
-            <div class="arch-title"><i class="fab fa-ethereum"></i> Evm.py</div>
-            <ul class="arch-list">
-                <li>EVM WSS 订阅</li>
-                <li>RPC 余额轮询</li>
-                <li>NFTScan 集成</li>
-                <li>SQLite 持久化</li>
-            </ul>
+        <div class="report-section">
+            <h2>1. 系统总体架构</h2>
+            <div class="architecture-diagram">
+                <div class="arch-node main-process">
+                    <div class="arch-title"><i class="fas fa-desktop"></i> 主进程 (main.py)</div>
+                    <ul class="arch-list">
+                        <li>PyWebView 窗口 (HTML/JS 前端)</li>
+                        <li>系统托盘图标 + 悬浮窗管理</li>
+                        <li>子进程生命周期管理 (启动/停止/重启)</li>
+                        <li>配置文件读写 (JSON) 与热加载</li>
+                    </ul>
+                </div>
+                <div class="arch-arrow">▼</div>
+                <div class="arch-children">
+                    <div class="arch-child">
+                        <div class="arch-title"><i class="fab fa-ethereum"></i> Evm.py</div>
+                        <ul class="arch-list">
+                            <li>EVM WSS 订阅</li>
+                            <li>RPC 余额轮询</li>
+                            <li>NFTScan 集成</li>
+                            <li>SQLite 持久化</li>
+                        </ul>
+                    </div>
+                    <div class="arch-child">
+                        <div class="arch-title"><i class="fas fa-sun"></i> Sol.py</div>
+                        <ul class="arch-list">
+                            <li>Solana WSS 订阅</li>
+                            <li>Helius API 解析</li>
+                            <li>DAS 元数据查询</li>
+                            <li>详细日志 JSON</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="arch-note">
+                    <i class="fas fa-shield-alt"></i> 设计要点：单实例互斥 (Windows全局互斥体) · UTF-8全链路 · 代理透明 (支持HTTP/Socks)
+                </div>
+            </div>
         </div>
-        <div class="arch-child">
-            <div class="arch-title"><i class="fas fa-sun"></i> Sol.py</div>
-            <ul class="arch-list">
-                <li>Solana WSS 订阅</li>
-                <li>Helius API 解析</li>
-                <li>DAS 元数据查询</li>
-                <li>详细日志 JSON</li>
-            </ul>
-        </div>
-    </div>
-    <div class="arch-note">
-        <i class="fas fa-shield-alt"></i> 设计要点：单实例互斥 (Windows全局互斥体) · UTF-8全链路 · 代理透明 (支持HTTP/Socks)
-    </div>
-</div>
 
         <div class="report-section">
             <h2>2. 核心功能模块</h2>
@@ -265,23 +331,41 @@
 
         <div class="report-section">
             <h2>1. System Architecture</h2>
-            <p><strong>Main process + child processes</strong> architecture: UI rendering and monitoring logic are isolated. A crash in one child process does not affect the main window or other chains.</p>
-            <div class="code-block">
-                ┌─────────────────────────────────────────────┐<br>
-                │         Main Process (main.py)              │<br>
-                │  - PyWebView Window (HTML/JS)               │<br>
-                │  - System Tray + Floating Widget            │<br>
-                │  - Child Process Lifecycle Management       │<br>
-                │  - Config Hot‑loading                       │<br>
-                └───────────────┬─────────────┬───────────────┘<br>
-                                │             │<br>
-                    ┌───────────▼─────┐   ┌───▼───────────┐<br>
-                    │  Evm.py         │   │  Sol.py       │<br>
-                    │  EVM WSS        │   │  Solana WSS   │<br>
-                    │  RPC Polling    │   │  Helius API   │<br>
-                    └─────────────────┘   └───────────────┘
+            <div class="architecture-diagram">
+                <div class="arch-node main-process">
+                    <div class="arch-title"><i class="fas fa-desktop"></i> Main Process (main.py)</div>
+                    <ul class="arch-list">
+                        <li>PyWebView Window (HTML/JS Frontend)</li>
+                        <li>System Tray + Floating Widget</li>
+                        <li>Child Process Lifecycle (Start/Stop/Restart)</li>
+                        <li>JSON Config Read/Write & Hot‑loading</li>
+                    </ul>
+                </div>
+                <div class="arch-arrow">▼</div>
+                <div class="arch-children">
+                    <div class="arch-child">
+                        <div class="arch-title"><i class="fab fa-ethereum"></i> Evm.py</div>
+                        <ul class="arch-list">
+                            <li>EVM WSS Subscription</li>
+                            <li>RPC Balance Polling</li>
+                            <li>NFTScan Integration</li>
+                            <li>SQLite Persistence</li>
+                        </ul>
+                    </div>
+                    <div class="arch-child">
+                        <div class="arch-title"><i class="fas fa-sun"></i> Sol.py</div>
+                        <ul class="arch-list">
+                            <li>Solana WSS Subscription</li>
+                            <li>Helius API Parsing</li>
+                            <li>DAS Metadata Query</li>
+                            <li>Detailed JSON Logs</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="arch-note">
+                    <i class="fas fa-shield-alt"></i> Design Highlights: Single Instance Mutex · UTF-8 Full Chain · Proxy Transparent (HTTP/Socks)
+                </div>
             </div>
-            <p><strong>Key points</strong>: single instance mutex, UTF‑8 throughout, transparent proxy support.</p>
         </div>
 
         <div class="report-section">
