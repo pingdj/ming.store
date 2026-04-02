@@ -89,28 +89,35 @@
             border: 1px solid #1e293b;
             margin: 1rem 0;
         }
-        .back-link {
-            display: inline-block;
-            margin-top: 2rem;
-            color: #60a5fa;
-            text-decoration: none;
-        }
-        .back-link:hover {
-            text-decoration: underline;
-        }
-        /* 语言切换按钮 */
-        .lang-switch-report {
+        /* 语言切换按钮 + 返回首页链接容器 */
+        .top-bar {
             position: fixed;
             top: 1rem;
+            left: 1rem;
             right: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             z-index: 100;
+            pointer-events: none;
+        }
+        .back-link-top, .lang-switch-report {
+            pointer-events: auto;
             background: #1e293b;
             border: 1px solid #3b82f6;
             border-radius: 30px;
             padding: 0.4rem 1rem;
-            cursor: pointer;
             font-size: 0.8rem;
             color: #e2e8f0;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .back-link-top:hover, .lang-switch-report:hover {
+            background: #2d3a5e;
+            border-color: #60a5fa;
+        }
+        .back-link-top i {
+            margin-right: 0.3rem;
         }
         /* 架构图样式 */
         .architecture-diagram {
@@ -178,6 +185,14 @@
             .arch-child {
                 margin-bottom: 0;
             }
+            .top-bar {
+                left: 0.5rem;
+                right: 0.5rem;
+            }
+            .back-link-top, .lang-switch-report {
+                padding: 0.3rem 0.8rem;
+                font-size: 0.7rem;
+            }
         }
     </style>
 </head>
@@ -186,7 +201,10 @@
 <div class="glow-orb orb-1"></div>
 <div class="glow-orb orb-2"></div>
 
-<button class="lang-switch-report" id="langSwitchReport">🌐 English</button>
+<div class="top-bar">
+    <a href="index.html" class="back-link-top"><i class="fas fa-arrow-left"></i> 返回首页</a>
+    <button class="lang-switch-report" id="langSwitchReport">🌐 English</button>
+</div>
 
 <div class="report-container" id="reportContent">
     <!-- 中文内容 -->
@@ -313,8 +331,6 @@
             <p>本系统是一个工程化程度高、功能全面、技术深度扎实的 Web3 桌面应用。它不仅实现了多链、多资产、多渠道的实时监控，更通过 AI 赋能、链上数据聚合、配置热更新等特性，为用户提供了超越传统区块浏览器的智能体验。系统的架构设计充分考虑了稳定性、可扩展性与易用性，是个人开发者独立完成的高质量商业级作品。</p>
             <p><strong>技术关键词</strong>：异步 I/O、WebSocket 长连接、多链异构解析、AI 多提供商轮换、缓存策略、进程隔离、热配置、数据持久化、多渠道推送。</p>
         </div>
-
-        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> 返回首页</a>
     </div>
 
     <!-- 英文内容 -->
@@ -423,8 +439,6 @@
             <p>This system is a highly engineered, feature‑rich, technically deep Web3 desktop application. It provides real‑time monitoring across multiple chains and assets, AI‑powered analysis, on‑chain data aggregation, and hot‑configurable UX – surpassing traditional block explorers. The architecture emphasizes stability, scalability, and ease of use, representing a commercial‑grade work by an independent developer.</p>
             <p><strong>Keywords</strong>: Async I/O, WebSocket long‑polling, multi‑chain heterogeneous parsing, multi‑AI provider rotation, caching strategies, process isolation, hot‑reload, data persistence, multi‑channel push.</p>
         </div>
-
-        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
     </div>
 </div>
 
