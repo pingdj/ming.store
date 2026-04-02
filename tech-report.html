@@ -138,26 +138,41 @@
             <p>本系统是一款面向 EVM 兼容链（Ethereum、BSC、Base、Polygon、Arbitrum）与 Solana 链的<strong>实时资产监控与智能分析平台</strong>。通过 WebSocket 长连接与 RPC 轮询混合架构，实现对指定钱包地址的原生币、代币、NFT 的全方位监控，并集成 Telegram、Discord、邮件、语音播报等多渠道推送。系统内置多 AI 提供商（DeepSeek、Moonshot）的智能解读能力，可对每笔交易进行风险评分、资金流向分析与投资建议。此外还提供链上项目追踪（CryptoRank、GeckoTerminal）、新项目发现（RootData 数据集成）、Web3 AI 聊天助手、交易仪表盘、悬浮窗实时通知等高级功能。</p>
         </div>
 
-        <div class="report-section">
-            <h2>1. 系统总体架构</h2>
-            <p>采用 <strong>主进程 + 独立子进程</strong> 的微内核架构，实现 UI 渲染与监控逻辑的物理隔离，确保任一子进程崩溃不影响主窗口及其他链的监控。</p>
-            <div class="code-block">
-                ┌─────────────────────────────────────────────┐<br>
-                │         主进程 (main.py)                    │<br>
-                │  - PyWebView 窗口 (HTML/JS 前端)            │<br>
-                │  - 系统托盘图标 + 悬浮窗管理                 │<br>
-                │  - 子进程生命周期管理 (启动/停止/重启)       │<br>
-                │  - 配置文件读写 (JSON) 与热加载             │<br>
-                └───────────────┬─────────────┬───────────────┘<br>
-                                │             │<br>
-                    ┌───────────▼─────┐   ┌───▼───────────┐<br>
-                    │  Evm.py         │   │  Sol.py       │<br>
-                    │  EVM WSS 订阅   │   │  Solana WSS   │<br>
-                    │  RPC 余额轮询   │   │  Helius API   │<br>
-                    └─────────────────┘   └───────────────┘
-            </div>
-            <p><strong>设计要点</strong>：单实例互斥（Windows 全局互斥体）、UTF-8 全链路、代理透明（支持 HTTP/Socks）。</p>
+<div class="architecture-diagram">
+    <div class="arch-node main-process">
+        <div class="arch-title"><i class="fas fa-desktop"></i> 主进程 (main.py)</div>
+        <ul class="arch-list">
+            <li>PyWebView 窗口 (HTML/JS 前端)</li>
+            <li>系统托盘图标 + 悬浮窗管理</li>
+            <li>子进程生命周期管理 (启动/停止/重启)</li>
+            <li>配置文件读写 (JSON) 与热加载</li>
+        </ul>
+    </div>
+    <div class="arch-arrow">▼</div>
+    <div class="arch-children">
+        <div class="arch-child">
+            <div class="arch-title"><i class="fab fa-ethereum"></i> Evm.py</div>
+            <ul class="arch-list">
+                <li>EVM WSS 订阅</li>
+                <li>RPC 余额轮询</li>
+                <li>NFTScan 集成</li>
+                <li>SQLite 持久化</li>
+            </ul>
         </div>
+        <div class="arch-child">
+            <div class="arch-title"><i class="fas fa-sun"></i> Sol.py</div>
+            <ul class="arch-list">
+                <li>Solana WSS 订阅</li>
+                <li>Helius API 解析</li>
+                <li>DAS 元数据查询</li>
+                <li>详细日志 JSON</li>
+            </ul>
+        </div>
+    </div>
+    <div class="arch-note">
+        <i class="fas fa-shield-alt"></i> 设计要点：单实例互斥 (Windows全局互斥体) · UTF-8全链路 · 代理透明 (支持HTTP/Socks)
+    </div>
+</div>
 
         <div class="report-section">
             <h2>2. 核心功能模块</h2>
