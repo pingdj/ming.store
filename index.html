@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title id="pageTitle">潇 楠 Web3哨兵 | 多链实时监控 · AI交易解读 · 新项目预警 · 链上雷达</title>
+    <meta name="description" id="metaDescription" content="潇楠Web3哨兵 — 专业级链上监控系统。支持Ethereum、BSC、Solana等10+公链，实时追踪大额转账/代币/NFT，集成DeepSeek AI解读交易风险，RootData新项目自动推送，GeckoTerminal链上土狗雷达，CryptoRank项目跟踪，Web3 AI助手与悬浮窗通知。为交易者提供一站式智能哨兵服务。">
+    <meta name="keywords" content="Web3监控,链上交易监控,多链监控系统,AI交易解读,Solana监控,EVM监控,链上预警,Alpha雷达,RootData,GeckoTerminal,土狗雷达,潇楠Web3">
+    <meta name="author" content="潇 楠 Web3实验室">
+    <meta name="robots" content="index, follow">
+    <meta name="baidu-site-verification" content="codeva-KuPsmzeRIx" />
+    <link rel="canonical" href="http://www.ming.store/">
+    <link rel="icon" type="image/x-icon" href="http://www.ming.store/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="http://www.ming.store/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="http://www.ming.store/img/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="http://www.ming.store/img/apple-touch-icon.png">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" id="ogTitle" content="潇楠Web3哨兵 | 多链实时监控 · AI交易解读 · 新项目预警">
+    <meta property="og:description" id="ogDescription" content="专业级Web3监控系统：EVM+Solana双链并行，AI深度解读大额交易，RootData新项目预警，GeckoTerminal链上土狗雷达，Web3 AI助手。">
+    <meta property="og:url" content="http://www.ming.store/">
+    <meta property="og:site_name" content="潇 楠 Web3哨兵">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" id="twitterTitle" content="潇楠Web3哨兵 | 多链实时监控 · AI交易解读 · 新项目预警">
+    <meta name="twitter:description" id="twitterDescription" content="EVM+Solana双链并行，AI深度交易解读，GeckoTerminal链上土狗雷达，RootData新项目推送，Web3 AI助手。">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+
+    <!-- 增强 JSON-LD 结构化数据 (SoftwareApplication + FAQ) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "潇 楠 Web3哨兵",
+      "applicationCategory": "Utility",
+      "operatingSystem": "Windows 10/11",
+      "description": "专业级Web3监控系统，支持Ethereum、BSC、Solana等10+公链实时追踪，AI深度解读大额交易，RootData新项目预警，GeckoTerminal链上土狗雷达，Web3 AI助手。",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "潇 楠 Web3实验室",
+        "email": "pingdj@vip.qq.com"
+      },
+      "keywords": "Web3监控,链上交易监控,多链监控系统,AI交易解读,Solana监控,EVM监控,链上预警,Alpha雷达,RootData,GeckoTerminal",
+      "featureList": [
+        "EVM + Solana 双链并行实时监控",
+        "AI 深度交易解读与风险评分",
+        "GeckoTerminal 链上土狗雷达",
+        "CryptoRank & RootData 新项目推送",
+        "Telegram/Discord/邮件/语音播报/悬浮窗通知",
+        "Web3 AI 助手（联网搜索）",
+        "交易仪表盘 + AI 日报/周报",
+        "可视化配置 + 代理支持"
+      ],
+      "screenshot": [
+        "http://www.ming.store/img/1-tic.png",
+        "http://www.ming.store/img/2-tic.png",
+        "http://www.ming.store/img/3-tic.png",
+        "http://www.ming.store/img/4-tic.png",
+        "http://www.ming.store/img/5-tic.png",
+        "http://www.ming.store/img/6-tic.png",
+        "http://www.ming.store/img/7-tic.png"
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "支持哪些公链？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "目前支持 Ethereum、BSC、Polygon、Arbitrum、Base 五条 EVM 链，以及 Solana。后续将增加 Aptos、Sui 等非EVM链。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "需要自己准备节点 RPC 吗？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "不需要。系统内置了公共 RPC 和 WSS 节点，开箱即用。也支持自定义添加私有节点，提高稳定性。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "AI 解读功能是否需要额外付费？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "完全免费。系统已内置 DeepSeek API 密钥，无需您自行注册或充值。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "如何获取软件和激活码？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "请通过页面上的「联系作者」按钮获取下载链接和激活码。软件为绿色免安装版，支持 Windows 10/11。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "数据会泄露吗？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "所有监控数据（交易记录、余额快照）仅存储在您本地电脑的 SQLite 数据库中，不会上传到任何服务器，隐私安全有保障。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "国内网络无法连接链上节点怎么办？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "软件内置代理配置功能，您只需填写本机代理地址（如 http://127.0.0.1:7897），即可通过代理访问 RPC/WSS。"
+          }
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+<div class="bg-grid"></div>
+<div class="glow-orb orb-1"></div>
+<div class="glow-orb orb-2"></div>
+
+<!-- 导航栏（增加语言切换按钮） -->
+<nav class="navbar">
+    <div class="container nav-container">
+        <div class="logo">潇 楠 · <span> Web3 哨兵</span></div>
+        <div class="nav-links">
+            <a href="#features" data-i18n="nav_features">核心功能</a>
+            <a href="#chains" data-i18n="nav_chains">支持公链</a>
+            <a href="#ai" data-i18n="nav_ai">AI 智能</a>
+            <a href="#channels" data-i18n="nav_channels">推送渠道</a>
+            <a href="#faq" data-i18n="nav_faq">常见问题</a>
+            <a href="#screenshot" data-i18n="nav_screenshot">软件实图</a>
+            <button class="btn-outline" id="contactBtn" data-i18n="nav_contact">联系作者</button>
+            <button class="btn-outline" id="langSwitch" style="margin-left: 8px;">🌐 English</button>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero 区域 -->
+<section class="hero">
+    <div class="container hero-grid">
+        <div>
+            <div class="badge" data-i18n="hero_badge"><i class="fas fa-bolt"></i> 全链监控 · AI 深度赋能 · 新项目雷达</div>
+            <h1 data-i18n="hero_title">Web3 多功能监控系统<br>实时守护数字资产</h1>
+            <p data-i18n="hero_desc">EVM + Solana 双链实时追踪，AI 解读大额交易与风险，RootData 新项目自动推送，GeckoTerminal 链上土狗雷达，CryptoRank 项目跟踪，Web3 AI 助手。为专业交易者打造的一站式链上哨兵。</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" id="heroContactBtn" data-i18n="hero_contact">联系作者</button>
+                <button class="btn-outline" id="learnMoreBtn" data-i18n="hero_demo">观看演示</button>
+            </div>
+            <div class="hero-stats">
+    <div class="stat">
+        <span class="stat-number">10+</span><br>
+        <span data-i18n="hero_stat1">主流公链</span>
+    </div>
+    <div class="stat">
+        <span class="stat-number">24/7</span><br>
+        <span data-i18n="hero_stat2">实时监控</span>
+    </div>
+    <div class="stat">
+        <span class="stat-number">AI</span><br>
+        <span data-i18n="hero_stat3">交易解读</span>
+    </div>
+</div>
+        </div>
+        <div class="hero-image">
+            <i class="fas fa-chart-network"></i>
+            <div class="dashboard-mock">
+                <div class="mock-card">
+                    <i class="fas fa-robot"></i>
+                    <span data-i18n="mock_ai">AI 解读</span>
+                    <span class="trend-up">↑12</span>
+                </div>
+                <div class="mock-card">
+                    <i class="fas fa-chart-line"></i>
+                    <span data-i18n="mock_radar">新币雷达</span>
+                    <span class="trend-up">+3</span>
+                </div>
+                <div class="mock-card">
+                    <i class="fas fa-bolt"></i>
+                    <span data-i18n="mock_large">大额转账</span>
+                    <span>2.3M</span>
+                </div>
+                <div class="mock-card">
+                    <i class="fas fa-eye"></i>
+                    <span data-i18n="mock_address">监控地址</span>
+                    <span>128</span>
+                </div>
+            </div>
+            <p style="margin-top: 16px; font-size: 0.8rem; color:#8ba3cb;" data-i18n="hero_mock_tip">链上仪表盘 · 毫秒级推送 · 悬浮窗通知</p>
+        </div>
+    </div>
+</section>
+
+<!-- 核心功能 -->
+<section id="features">
+    <div class="container">
+        <h2 class="section-title" data-i18n="features_title">⚡ 不止于监控，更是智能分析中枢</h2>
+        <div class="section-sub" data-i18n="features_sub">从链上数据到AI解读，再到新项目发现，每一步都为您的资产安全与投资决策服务。</div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-link"></i></div>
+                <h3 data-i18n="f1_title">EVM + Solana 双链并行</h3>
+                <p data-i18n="f1_desc">支持 Ethereum、BSC、Polygon、Arbitrum、Base 及 Solana 链上实时交易追踪，原生币、ERC20/SPL代币、NFT 变动无遗漏。多WSS节点自动轮换，高可用连接。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-brain"></i></div>
+                <h3 data-i18n="f2_title">AI 深度交易解读</h3>
+                <p data-i18n="f2_desc">集成 DeepSeek 大模型，自动分析大额转账、风险评分、资金流向，生成专业交易解读与操作建议。支持情感化评语，让监控更生动。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                <h3 data-i18n="f3_title">链上土狗雷达 · GeckoTerminal</h3>
+                <p data-i18n="f3_desc">实时抓取 Solana、Ethereum、BSC 等链上新上线交易对，展示价格、流动性、成交量，支持 AI 解读项目风险，第一时间发现潜力 Meme 币。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-newspaper"></i></div>
+                <h3 data-i18n="f4_title">CryptoRank & RootData 新项目</h3>
+                <p data-i18n="f4_desc">自动同步 CryptoRank 最新项目库，RootData 新项目实时推送，附带融资信息、社交链接，帮助您抢占一级市场先机。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-bell"></i></div>
+                <h3 data-i18n="f5_title">多端实时推送 + 悬浮窗</h3>
+                <p data-i18n="f5_desc">Telegram、Discord、邮件、语音播报，重磅交易高亮提醒。桌面悬浮窗实时显示资产变动和RootData新项目，不错过任何重要动态。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                <h3 data-i18n="f6_title">交易仪表盘 + AI 日报/周报</h3>
+                <p data-i18n="f6_desc">每日流入/流出统计图表，AI 自动生成投资摘要日报与周报，资产动向可视化，辅助决策。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-comments"></i></div>
+                <h3 data-i18n="f7_title">Web3 AI 助手</h3>
+                <p data-i18n="f7_desc">内置 AI 聊天机器人，支持联网搜索（Moonshot）或离线知识（DeepSeek），可查询实时新闻、项目分析、市场解读，多会话管理。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-sliders-h"></i></div>
+                <h3 data-i18n="f8_title">可视化配置 + 代理支持</h3>
+                <p data-i18n="f8_desc">前端界面直接编辑 JSON 配置文件，修改后自动重启子进程。支持 HTTP/Socks 代理，国内网络无障碍使用。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 支持公链 -->
+<section id="chains">
+    <div class="container">
+        <h2 class="section-title" data-i18n="chains_title">🌐 覆盖主流生态，无缝对接</h2>
+        <div class="section-sub" data-i18n="chains_sub">一次配置，多链监控，支持自定义RPC与WebSocket节点，高可用自动切换。</div>
+        <div class="chains">
+            <div class="chain-badge"><i class="fab fa-ethereum"></i> Ethereum</div>
+            <div class="chain-badge"><i class="fas fa-fire"></i> BSC</div>
+            <div class="chain-badge"><i class="fas fa-cube"></i> Polygon</div>
+            <div class="chain-badge"><i class="fas fa-chart-line"></i> Arbitrum</div>
+            <div class="chain-badge"><i class="fas fa-building"></i> Base</div>
+            <div class="chain-badge"><i class="fas fa-sun"></i> Solana</div>
+        </div>
+        <div class="stats-wall">
+            <div class="stat-item"><i class="fas fa-database fa-2x" style="color:#60a5fa;"></i><div class="stat-number" data-i18n="stat1_title">实时事件</div><div data-i18n="stat1_desc">WSS 推送 & RPC 轮询</div></div>
+            <div class="stat-item"><i class="fas fa-shield-alt fa-2x" style="color:#60a5fa;"></i><div class="stat-number" data-i18n="stat2_title">资产安全</div><div data-i18n="stat2_desc">本地化存储，隐私优先</div></div>
+            <div class="stat-item"><i class="fas fa-chart-simple fa-2x" style="color:#60a5fa;"></i><div class="stat-number" data-i18n="stat3_title">自定义告警</div><div data-i18n="stat3_desc">阈值/大额/多钱包</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- 实时推送渠道 -->
+<section id="channels">
+    <div class="container">
+        <h2 class="section-title" data-i18n="channels_title">📢 多渠道实时推送 · 不错过任何重要动态</h2>
+        <div class="section-sub" data-i18n="channels_sub">无论您使用哪种通讯工具，都能第一时间收到链上警报。</div>
+        <div class="channels-grid">
+            <div class="channel-card"><i class="fab fa-telegram"></i><h3 data-i18n="ch_tg">Telegram</h3><p data-i18n="ch_tg_desc">机器人即时推送，支持自定义频道</p></div>
+            <div class="channel-card"><i class="fab fa-discord"></i><h3 data-i18n="ch_dc">Discord</h3><p data-i18n="ch_dc_desc">嵌入式通知，精美卡片展示交易详情</p></div>
+            <div class="channel-card"><i class="fas fa-envelope"></i><h3 data-i18n="ch_email">邮件</h3><p data-i18n="ch_email_desc">SSL加密发送，支持SMTP配置</p></div>
+            <div class="channel-card"><i class="fas fa-volume-up"></i><h3 data-i18n="ch_voice">语音播报</h3><p data-i18n="ch_voice_desc">大额交易语音提醒，可自定义音频</p></div>
+            <div class="channel-card"><i class="fas fa-desktop"></i><h3 data-i18n="ch_floating">桌面悬浮窗</h3><p data-i18n="ch_floating_desc">实时滚动通知，不干扰工作流</p></div>
+            <div class="channel-card"><i class="fas fa-mobile-alt"></i><h3 data-i18n="ch_future">钉钉/飞书（即将支持）</h3><p data-i18n="ch_future_desc">企业级消息推送</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- 常见问题 FAQ -->
+<section id="faq">
+    <div class="container">
+        <h2 class="section-title" data-i18n="faq_title">❓ 常见问题</h2>
+        <div class="section-sub" data-i18n="faq_sub">您可能关心的问题，答案都在这里。</div>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <div class="faq-question"><i class="fas fa-question-circle"></i> <span data-i18n="q1">支持哪些公链？</span></div>
+                <div class="faq-answer" data-i18n="a1">目前支持 Ethereum、BSC、Polygon、Arbitrum、Base 五条 EVM 链，以及 Solana。后续将增加 Aptos、Sui 等非EVM链。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question"><i class="fas fa-question-circle"></i> <span data-i18n="q2">需要自己准备节点 RPC 吗？</span></div>
+                <div class="faq-answer" data-i18n="a2">不需要。系统内置了公共 RPC 和 WSS 节点，开箱即用。也支持自定义添加私有节点，提高稳定性。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question"><i class="fas fa-question-circle"></i> <span data-i18n="q3">AI 解读功能是否需要额外付费？</span></div>
+                <div class="faq-answer" data-i18n="a3">完全免费。系统已内置 DeepSeek API 密钥，无需您自行注册或充值。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question"><i class="fas fa-question-circle"></i> <span data-i18n="q4">如何获取软件和激活码？</span></div>
+                <div class="faq-answer" data-i18n="a4">请通过页面上的「联系作者」按钮获取下载链接和激活码。软件为绿色免安装版，支持 Windows 10/11。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question"><i class="fas fa-question-circle"></i> <span data-i18n="q5">数据会泄露吗？</span></div>
+                <div class="faq-answer" data-i18n="a5">所有监控数据（交易记录、余额快照）仅存储在您本地电脑的 SQLite 数据库中，不会上传到任何服务器，隐私安全有保障。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question"><i class="fas fa-question-circle"></i> <span data-i18n="q6">国内网络无法连接链上节点怎么办？</span></div>
+                <div class="faq-answer" data-i18n="a6">软件内置代理配置功能，您只需填写本机代理地址（如 http://127.0.0.1:7897），即可通过代理访问 RPC/WSS。</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 版本亮点 / 更新日志 -->
+<section id="changelog">
+    <div class="container">
+        <h2 class="section-title" data-i18n="changelog_title">📌 版本亮点 · V10 全新升级</h2>
+        <div class="section-sub" data-i18n="changelog_sub">持续迭代，只为更专业的链上监控体验。</div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-badge">V10</div>
+                <div class="timeline-content">
+                    <h3 data-i18n="cl1_title">✨ 新增桌面悬浮窗</h3>
+                    <p data-i18n="cl1_desc">实时滚动显示资产变动和RootData新项目，置顶显示，不影响其他操作。</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-badge">V10</div>
+                <div class="timeline-content">
+                    <h3 data-i18n="cl2_title">🐕 链上土狗雷达（GeckoTerminal）</h3>
+                    <p data-i18n="cl2_desc">支持 Solana、Ethereum、BSC 等链上新交易对监控，价格、流动性、成交量一目了然，支持 AI 解读。</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-badge">V10</div>
+                <div class="timeline-content">
+                    <h3 data-i18n="cl3_title">🤖 Web3 AI 助手</h3>
+                    <p data-i18n="cl3_desc">内置多会话聊天机器人，支持联网搜索和离线知识库，可查询最新新闻、项目分析。</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-badge">V9</div>
+                <div class="timeline-content">
+                    <h3 data-i18n="cl4_title">📊 交易仪表盘 + AI 日报/周报</h3>
+                    <p data-i18n="cl4_desc">图表化展示每日流入流出，AI 自动生成投资摘要。</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-badge">V8</div>
+                <div class="timeline-content">
+                    <h3 data-i18n="cl5_title">RootData 新项目实时推送</h3>
+                    <p data-i18n="cl5_desc">第一时间捕获一级市场新项目，附带融资、社交信息。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- AI 智能模块 -->
+<section id="ai">
+    <div class="container">
+        <h2 class="section-title" data-i18n="ai_title">🤖 AI 智能助手 · 让链上数据开口说话</h2>
+        <div class="section-sub" data-i18n="ai_sub">集成深度求索 (DeepSeek) 大模型与 Moonshot 联网搜索，为您提供交易解读、项目分析、每日快评与投资建议。</div>
+        <div class="features-grid" style="margin-bottom: 20px;">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-comment-dots"></i></div>
+                <h3 data-i18n="ai_card1_title">交易解读</h3>
+                <p data-i18n="ai_card1_desc">自动识别交易意图，分析风险等级，给出操作建议，帮助您理解链上行为。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-chart-pie"></i></div>
+                <h3 data-i18n="ai_card2_title">AI 日报 / 周报</h3>
+                <p data-i18n="ai_card2_desc">汇总过去24小时/7天交易记录，生成专业投资摘要，资产趋势一目了然。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-microphone-alt"></i></div>
+                <h3 data-i18n="ai_card3_title">语音播报 + 情绪文字</h3>
+                <p data-i18n="ai_card3_desc">大额交易语音提醒，AI 生成趣味性评语，让监控更生动。</p>
+            </div>
+        </div>
+        <div style="background:#0f172a; border-radius: 28px; padding: 24px; margin-top: 20px; border:1px solid #334155;">
+            <div style="display: flex; gap:12px; align-items:center; margin-bottom: 20px;"><i class="fas fa-robot" style="color:#8b5cf6;"></i><strong data-i18n="ai_demo_title">AI 助手示例</strong><span style="color:#94a3b8;" data-i18n="ai_demo_sub"> 实时解读大额转账</span></div>
+            <div style="background:#1e293b; border-radius: 20px; padding: 16px;" data-i18n="ai_demo_content"><i class="fas fa-exchange-alt"></i> 监测到 0x742... 地址转出 1,250 ETH（价值约 $2.3M）<br>🤖 AI解读：大额资金疑似交易所归集，风险较低，但需留意后续地址动态。<span style="color:#a78bfa;"> 风险等级：中</span><br>😄 [DeepSeek] 钱包变瘦，心在滴血，但别慌，交易所大额归集而已～</div>
+        </div>
+    </div>
+</section>
+
+<!-- 软件实图板块 -->
+<section id="screenshot">
+    <div class="container">
+        <h2 class="section-title" data-i18n="screenshot_title">📸 软件实图 · 界面一览</h2>
+        <div class="section-sub" data-i18n="screenshot_sub">简洁现代，多维度监控面板，真实操作界面截图</div>
+        <div class="screenshot-grid">
+            <div class="screenshot-card">
+                <img src="img/1-tic.png" alt="Web3多链监控系统主界面 - 实时仪表盘展示多链状态" style="cursor: pointer;">
+                <p data-i18n="screenshot1">实时仪表盘 · 多链状态总览</p>
+            </div>
+            <div class="screenshot-card">
+                <img src="img/2-tic.png" alt="币安行情与Alpha雷达监控界面" style="cursor: pointer;">
+                <p data-i18n="screenshot2">币安现货和ALPHA</p>
+            </div>
+            <div class="screenshot-card">
+                <img src="img/3-tic.png" alt="链上雷达实时监控大额交易与异常活动" style="cursor: pointer;">
+                <p data-i18n="screenshot3">链上雷达实时监控</p>
+            </div>
+            <div class="screenshot-card">
+                <img src="img/4-tic.png" alt="CryptoRank新项目跟踪界面" style="cursor: pointer;">
+                <p data-i18n="screenshot4">CryptoRank跟踪</p>
+            </div>
+            <div class="screenshot-card">
+                <img src="img/5-tic.png" alt="RootData项目推送与数据分析界面" style="cursor: pointer;">
+                <p data-i18n="screenshot5">RootData项目推送</p>
+            </div>
+            <div class="screenshot-card">
+                <img src="img/6-tic.png" alt="交易仪表盘统计图表" style="cursor: pointer;">
+                <p data-i18n="screenshot6">交易仪表盘</p>
+            </div>
+            <div class="screenshot-card">
+                <img src="img/7-tic.png" alt="WEB3助手AI智能分析界面" style="cursor: pointer;">
+                <p data-i18n="screenshot7">WEB3助手</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA区域 联系作者 -->
+<div class="container">
+    <div class="cta">
+        <h2 data-i18n="cta_title">🚀 立即部署，掌控链上先机</h2>
+        <p style="margin-bottom: 28px;" data-i18n="cta_desc">桌面应用 · 绿色免安装 · 支持 Windows 10/11</p>
+        <button class="btn-primary" id="ctaContactBtn" style="padding: 14px 36px; font-size:1.1rem;" data-i18n="cta_btn"><i class="fas fa-envelope"></i> 联系作者</button>
+        <p style="margin-top: 20px; font-size:0.8rem;" data-i18n="cta_footer">⚡ 软件定制 · 持续更新</p>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <p data-i18n="footer_copyright">© 2026 潇楠Web3实验室 | 数据源于链上公开API，不构成投资建议。为Web3安全贡献一份力。</p>
+        <p style="margin-top: 8px;" data-i18n="footer_contact"><i class="fab fa-github"></i> 软件获取 · <i class="fab fa-twitter"></i> pingdj@vip.qq.com</p>
+    </div>
+</footer>
+
+<!-- 联系模态框 -->
+<div id="contactModal" class="modal">
+    <div class="modal-content">
+        <h3><i class="fas fa-address-card"></i> <span data-i18n="modal_title">联系作者</span></h3>
+        <p><i class="fas fa-envelope"></i> <span data-i18n="modal_email">邮箱：pingdj@vip.qq.com</span></p>
+        <p><i class="fab fa-weixin"></i> <span data-i18n="modal_wechat">微信：CaiLai246</span></p>
+        <button class="close-modal" id="closeContactModal" data-i18n="modal_close">关闭</button>
+    </div>
+</div>
+
+<!-- 图片放大模态框 -->
+<div id="imageModal" class="modal">
+    <div class="modal-content image-modal-content">
+        <button class="image-close">&times;</button>
+        <img id="modalImage" src="" alt="大图预览">
+    </div>
+</div>
+
+<!-- 视频演示模态框 -->
+<div id="videoModal" class="modal">
+    <div class="modal-content" style="max-width: 90%; width: auto; padding: 20px;">
+        <button class="image-close" id="closeVideoModal">&times;</button>
+        <video id="demoVideo" controls style="width: 100%; max-height: 80vh; border-radius: 12px;">
+            <source src="videos/web3.mp4" type="video/mp4">
+            您的浏览器不支持视频播放。
+        </video>
+    </div>
+</div>
+
+<script src="js/video-modal.js"></script>
+<script src="js/script.js"></script>
+<script src="js/i18n.js"></script>
+</body>
+</html>
