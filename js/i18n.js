@@ -4,6 +4,7 @@ const translations = {
         // 导航
         nav_features: '核心功能', nav_chains: '支持公链', nav_ai: 'AI 智能',
         nav_channels: '推送渠道', nav_faq: '常见问题', nav_screenshot: '软件实图', nav_contact: '联系作者',
+        nav_report: '深度报告',   // 中文
         // Hero
         hero_badge: '<i class="fas fa-bolt"></i> 全链监控 · AI 深度赋能 · 新项目雷达',
         hero_title: 'Web3 多功能监控系统<br>实时守护数字资产',
@@ -93,6 +94,7 @@ const translations = {
         // 导航
         nav_features: 'Core Features', nav_chains: 'Supported Chains', nav_ai: 'AI Intelligence',
         nav_channels: 'Channels', nav_faq: 'FAQ', nav_screenshot: 'Screenshots', nav_contact: 'Contact',
+        nav_report: 'Tech Report', // 英文
         // Hero
         hero_badge: '<i class="fas fa-bolt"></i> Multi-Chain Monitor · AI Powered · New Project Radar',
         hero_title: 'Web3 Multi-Function Monitor<br>Real-time Asset Protection',

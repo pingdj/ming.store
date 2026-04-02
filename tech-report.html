@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>技术深度报告 · 潇楠 Web3 哨兵</title>
+    <meta name="description" content="潇楠Web3哨兵系统技术深度报告：架构设计、核心模块、AI集成、多链监控、性能优化等全面解析。">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <style>
+        /* 报告页额外样式 */
+        .report-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+        .report-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(59,130,246,0.3);
+        }
+        .report-header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #60a5fa, #c084fc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        .report-header .sub {
+            color: #94a3b8;
+            font-size: 1rem;
+        }
+        .report-section {
+            margin-bottom: 3rem;
+        }
+        .report-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+            color: #60a5fa;
+            border-left: 4px solid #3b82f6;
+            padding-left: 1rem;
+        }
+        .report-section h3 {
+            font-size: 1.3rem;
+            margin: 1.5rem 0 0.8rem;
+            color: #cbd5e1;
+        }
+        .report-section p {
+            color: #94a3b8;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        .tech-badge {
+            background: rgba(59,130,246,0.15);
+            border-radius: 30px;
+            padding: 0.2rem 0.8rem;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            color: #60a5fa;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .card-tech {
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 1rem;
+            padding: 1.2rem;
+            border: 1px solid #1e293b;
+        }
+        .card-tech h4 {
+            color: #60a5fa;
+            margin-bottom: 0.5rem;
+        }
+        .code-block {
+            background: #0a0c10;
+            border-radius: 0.8rem;
+            padding: 1rem;
+            font-family: monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            border: 1px solid #1e293b;
+            margin: 1rem 0;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            color: #60a5fa;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        /* 语言切换按钮 */
+        .lang-switch-report {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 100;
+            background: #1e293b;
+            border: 1px solid #3b82f6;
+            border-radius: 30px;
+            padding: 0.4rem 1rem;
+            cursor: pointer;
+            font-size: 0.8rem;
+            color: #e2e8f0;
+        }
+        @media (max-width: 640px) {
+            .report-header h1 { font-size: 1.8rem; }
+            .report-section h2 { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="bg-grid"></div>
+<div class="glow-orb orb-1"></div>
+<div class="glow-orb orb-2"></div>
+
+<button class="lang-switch-report" id="langSwitchReport">🌐 English</button>
+
+<div class="report-container" id="reportContent">
+    <!-- 中文内容 -->
+    <div id="zhContent">
+        <div class="report-header">
+            <h1>Web3 双链智能监控系统 · 技术深度报告</h1>
+            <div class="sub">版本 V10 | 架构设计 · 核心模块 · 性能优化 · 安全体系</div>
+        </div>
+
+        <div class="report-section">
+            <h2>摘要</h2>
+            <p>本系统是一款面向 EVM 兼容链（Ethereum、BSC、Base、Polygon、Arbitrum）与 Solana 链的<strong>实时资产监控与智能分析平台</strong>。通过 WebSocket 长连接与 RPC 轮询混合架构，实现对指定钱包地址的原生币、代币、NFT 的全方位监控，并集成 Telegram、Discord、邮件、语音播报等多渠道推送。系统内置多 AI 提供商（DeepSeek、Moonshot）的智能解读能力，可对每笔交易进行风险评分、资金流向分析与投资建议。此外还提供链上项目追踪（CryptoRank、GeckoTerminal）、新项目发现（RootData 数据集成）、Web3 AI 聊天助手、交易仪表盘、悬浮窗实时通知等高级功能。</p>
+        </div>
+
+        <div class="report-section">
+            <h2>1. 系统总体架构</h2>
+            <p>采用 <strong>主进程 + 独立子进程</strong> 的微内核架构，实现 UI 渲染与监控逻辑的物理隔离，确保任一子进程崩溃不影响主窗口及其他链的监控。</p>
+            <div class="code-block">
+                ┌─────────────────────────────────────────────┐<br>
+                │         主进程 (main.py)                    │<br>
+                │  - PyWebView 窗口 (HTML/JS 前端)            │<br>
+                │  - 系统托盘图标 + 悬浮窗管理                 │<br>
+                │  - 子进程生命周期管理 (启动/停止/重启)       │<br>
+                │  - 配置文件读写 (JSON) 与热加载             │<br>
+                └───────────────┬─────────────┬───────────────┘<br>
+                                │             │<br>
+                    ┌───────────▼─────┐   ┌───▼───────────┐<br>
+                    │  Evm.py         │   │  Sol.py       │<br>
+                    │  EVM WSS 订阅   │   │  Solana WSS   │<br>
+                    │  RPC 余额轮询   │   │  Helius API   │<br>
+                    └─────────────────┘   └───────────────┘
+            </div>
+            <p><strong>设计要点</strong>：单实例互斥（Windows 全局互斥体）、UTF-8 全链路、代理透明（支持 HTTP/Socks）。</p>
+        </div>
+
+        <div class="report-section">
+            <h2>2. 核心功能模块</h2>
+            <div class="grid-2">
+                <div class="card-tech">
+                    <h4>🔷 EVM 链监控</h4>
+                    <p>原生币 RPC 轮询（60s），代币/NFT 通过 WSS 订阅 logs，支持 ERC20/721/1155 事件解析。自动获取代币 symbol/decimals，集成 NFTScan 元数据增强。</p>
+                </div>
+                <div class="card-tech">
+                    <h4>☀️ Solana 链监控</h4>
+                    <p>logsSubscribe 实时捕获签名，通过 Helius DAS API 解析 nativeTransfers、tokenTransfers、NFT 事件。支持 SPL 代币价格与元数据查询。</p>
+                </div>
+                <div class="card-tech">
+                    <h4>🧠 AI 智能解读</h4>
+                    <p>MultiAIClient 支持 DeepSeek/Moonshot 轮换，自动分析交易意图、风险评分、生成投资建议与幽默评语。日报/周报定时推送。</p>
+                </div>
+                <div class="card-tech">
+                    <h4>📡 多渠道推送</h4>
+                    <p>Telegram、Discord、Email、语音播报，大额交易特殊标记。桌面悬浮窗实时滚动通知，支持通知导出。</p>
+                </div>
+                <div class="card-tech">
+                    <h4>📊 链上数据聚合</h4>
+                    <p>CryptoRank 项目列表、GeckoTerminal 新交易对雷达、RootData 新项目监控（官方 API + 公开数据解析）。</p>
+                </div>
+                <div class="card-tech">
+                    <h4>⚙️ 可视化配置</h4>
+                    <p>前端在线编辑 JSON 配置，保存后自动重启子进程。代理配置、节点轮换、阈值调整无需重启主程序。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="report-section">
+            <h2>3. 关键技术实现</h2>
+            <h3>3.1 高可用 WSS 连接管理</h3>
+            <p>每条链可配置多个 WSS 节点，当前节点异常时自动切换；指数退避重连（5s→60s）；支持代理（websockets_proxy）。</p>
+            <h3>3.2 内存与性能优化</h3>
+            <p>LimitedSizeDict 限制缓存大小（token 1000，价格 500，NFT 200）；异步文件写入队列（避免并发写 JSON）；SQLite 短连接 + WAL 模式。</p>
+            <h3>3.3 去重与持久化</h3>
+            <p>EVM：数据库唯一约束 (tx_hash, log_index, address)；Solana：内存集合 processed_sigs（自动淘汰）。交易记录本地化存储，隐私安全。</p>
+            <h3>3.4 AI 多提供商容错</h3>
+            <p>支持 DeepSeek（无联网）和 Moonshot（联网搜索），按特征开关自动轮换。对 LLM 返回的非标准 JSON 进行正则修复，确保解读不丢失。</p>
+        </div>
+
+        <div class="report-section">
+            <h2>4. 技术难点与突破</h2>
+            <ul style="color:#94a3b8; margin-left: 1.5rem;">
+                <li><strong>EVM 原生币无法 WSS 实时</strong> → RPC 轮询 + 余额快照对比。</li>
+                <li><strong>ERC1155 批量转账解析</strong> → 分别处理 TransferSingle 与 TransferBatch，从 data 字段提取 tokenId 与数量。</li>
+                <li><strong>Solana 代币价格缺失</strong> → 优先 Helius price_info，回退 DexScreener。</li>
+                <li><strong>国内网络 WSS 连接失败</strong> → 集成代理支持，前端可视化配置。</li>
+                <li><strong>长时间运行内存增长</strong> → 所有缓存使用有限大小字典，数据库短连接。</li>
+            </ul>
+        </div>
+
+        <div class="report-section">
+            <h2>5. 安全与隐私</h2>
+            <p>所有监控数据（交易记录、余额快照）仅存储于本地 SQLite 数据库，不上传任何服务器。激活机制基于机器码（硬盘序列号+主板UUID）的 HMAC 签名验证，激活信息加密存储于 %APPDATA%。子进程与主进程隔离，单实例互斥防止重复运行。</p>
+        </div>
+
+        <div class="report-section">
+            <h2>6. 部署与运维</h2>
+            <p>使用 PyInstaller 打包为单个 EXE，内置 Python 运行时。配置文件外置于 EXE 同级目录，用户可随时修改。日志按天轮转（EVM），Solana 详细日志按日期 JSON 归档。子进程异常退出时，用户可通过 UI 手动重启，不影响其他链监控。</p>
+        </div>
+
+        <div class="report-section">
+            <h2>7. 未来演进方向</h2>
+            <p>增加 Aptos、Sui 等非 EVM 链；接入 GPT-4o 实现多模态解读；云端协同降低本地资源占用；移动端适配（WebSocket 推送）。</p>
+        </div>
+
+        <div class="report-section">
+            <h2>8. 总结</h2>
+            <p>本系统是一个工程化程度高、功能全面、技术深度扎实的 Web3 桌面应用。它不仅实现了多链、多资产、多渠道的实时监控，更通过 AI 赋能、链上数据聚合、配置热更新等特性，为用户提供了超越传统区块浏览器的智能体验。系统的架构设计充分考虑了稳定性、可扩展性与易用性，是个人开发者独立完成的高质量商业级作品。</p>
+            <p><strong>技术关键词</strong>：异步 I/O、WebSocket 长连接、多链异构解析、AI 多提供商轮换、缓存策略、进程隔离、热配置、数据持久化、多渠道推送。</p>
+        </div>
+
+        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> 返回首页</a>
+    </div>
+
+    <!-- 英文内容 -->
+    <div id="enContent" style="display: none;">
+        <div class="report-header">
+            <h1>Web3 Dual‑Chain Intelligent Monitoring System · Technical Deep Dive</h1>
+            <div class="sub">Version V10 | Architecture · Core Modules · Performance · Security</div>
+        </div>
+
+        <div class="report-section">
+            <h2>Abstract</h2>
+            <p>This system is a <strong>real‑time asset monitoring and intelligent analysis platform</strong> for EVM‑compatible chains (Ethereum, BSC, Base, Polygon, Arbitrum) and Solana. It uses a hybrid WebSocket + RPC polling architecture to track native coins, tokens, and NFTs for specified wallet addresses, and integrates multi‑channel push (Telegram, Discord, Email, voice). Built‑in multi‑AI provider (DeepSeek, Moonshot) delivers transaction insights, risk scoring, and investment suggestions. Additional features include on‑chain project tracking (CryptoRank, GeckoTerminal), new project discovery (RootData integration), Web3 AI chat assistant, dashboard, and floating widget.</p>
+        </div>
+
+        <div class="report-section">
+            <h2>1. System Architecture</h2>
+            <p><strong>Main process + child processes</strong> architecture: UI rendering and monitoring logic are isolated. A crash in one child process does not affect the main window or other chains.</p>
+            <div class="code-block">
+                ┌─────────────────────────────────────────────┐<br>
+                │         Main Process (main.py)              │<br>
+                │  - PyWebView Window (HTML/JS)               │<br>
+                │  - System Tray + Floating Widget            │<br>
+                │  - Child Process Lifecycle Management       │<br>
+                │  - Config Hot‑loading                       │<br>
+                └───────────────┬─────────────┬───────────────┘<br>
+                                │             │<br>
+                    ┌───────────▼─────┐   ┌───▼───────────┐<br>
+                    │  Evm.py         │   │  Sol.py       │<br>
+                    │  EVM WSS        │   │  Solana WSS   │<br>
+                    │  RPC Polling    │   │  Helius API   │<br>
+                    └─────────────────┘   └───────────────┘
+            </div>
+            <p><strong>Key points</strong>: single instance mutex, UTF‑8 throughout, transparent proxy support.</p>
+        </div>
+
+        <div class="report-section">
+            <h2>2. Core Modules</h2>
+            <div class="grid-2">
+                <div class="card-tech"><h4>🔷 EVM Monitoring</h4><p>Native coin RPC polling (60s), token/NFT via WSS logs (ERC20/721/1155). Auto‑fetch symbol/decimals, NFTScan metadata.</p></div>
+                <div class="card-tech"><h4>☀️ Solana Monitoring</h4><p>logsSubscribe for signatures, Helius DAS API parsing nativeTransfers, tokenTransfers, NFT events. SPL token price & metadata.</p></div>
+                <div class="card-tech"><h4>🧠 AI Insights</h4><p>MultiAIClient (DeepSeek/Moonshot) for transaction analysis, risk scoring, suggestions, daily/weekly reports.</p></div>
+                <div class="card-tech"><h4>📡 Multi‑Channel Push</h4><p>Telegram, Discord, Email, voice, floating widget. Large transactions highlighted.</p></div>
+                <div class="card-tech"><h4>📊 On‑Chain Data</h4><p>CryptoRank projects, GeckoTerminal new pairs, RootData new projects (official API + public data).</p></div>
+                <div class="card-tech"><h4>⚙️ Visual Config</h4><p>Edit JSON configs from frontend, auto‑restart child processes. Proxy, node rotation, thresholds adjustable without restarting main program.</p></div>
+            </div>
+        </div>
+
+        <div class="report-section">
+            <h2>3. Key Technical Implementations</h2>
+            <h3>3.1 High‑Availability WSS</h3>
+            <p>Multiple WSS nodes per chain, auto‑failover, exponential backoff (5s→60s), proxy support via websockets_proxy.</p>
+            <h3>3.2 Memory & Performance</h3>
+            <p>LimitedSizeDict caches (token 1000, price 500, NFT 200); async file write queue; SQLite short connections + WAL.</p>
+            <h3>3.3 Deduplication & Persistence</h3>
+            <p>EVM: UNIQUE(tx_hash, log_index, address); Solana: in‑memory processed_sigs set. All data stored locally.</p>
+            <h3>3.4 AI Provider Fault Tolerance</h3>
+            <p>Automatic provider rotation by feature flags; regex fallback for malformed JSON responses.</p>
+        </div>
+
+        <div class="report-section">
+            <h2>4. Technical Challenges & Solutions</h2>
+            <ul style="color:#94a3b8; margin-left: 1.5rem;">
+                <li><strong>EVM native coin real‑time</strong> → RPC polling + balance snapshot comparison.</li>
+                <li><strong>ERC1155 batch transfers</strong> → Parse TransferSingle and TransferBatch, extract tokenId/value from data field.</li>
+                <li><strong>Solana token price missing</strong> → Helius price_info first, fallback to DexScreener.</li>
+                <li><strong>WSS blocked by GFW</strong> → Proxy integration with visual configuration.</li>
+                <li><strong>Memory growth over time</strong> → All caches use LimitedSizeDict, short‑lived DB connections.</li>
+            </ul>
+        </div>
+
+        <div class="report-section">
+            <h2>5. Security & Privacy</h2>
+            <p>All monitoring data stored locally in SQLite, never uploaded. Activation uses HMAC signature based on machine code (disk serial + motherboard UUID), license encrypted in %APPDATA%. Child processes isolated, single instance mutex.</p>
+        </div>
+
+        <div class="report-section">
+            <h2>6. Deployment & Operations</h2>
+            <p>Packaged as single EXE with PyInstaller, embedded Python runtime. Config files placed alongside EXE. Log rotation (EVM daily), Solana detailed logs archived by date JSON. Child process crashes can be manually restarted via UI without affecting other chains.</p>
+        </div>
+
+        <div class="report-section">
+            <h2>7. Future Roadmap</h2>
+            <p>Add Aptos, Sui; integrate GPT‑4o for multimodal insights; cloud coordination to reduce local resource usage; mobile adaptation via WebSocket push.</p>
+        </div>
+
+        <div class="report-section">
+            <h2>8. Conclusion</h2>
+            <p>This system is a highly engineered, feature‑rich, technically deep Web3 desktop application. It provides real‑time monitoring across multiple chains and assets, AI‑powered analysis, on‑chain data aggregation, and hot‑configurable UX – surpassing traditional block explorers. The architecture emphasizes stability, scalability, and ease of use, representing a commercial‑grade work by an independent developer.</p>
+            <p><strong>Keywords</strong>: Async I/O, WebSocket long‑polling, multi‑chain heterogeneous parsing, multi‑AI provider rotation, caching strategies, process isolation, hot‑reload, data persistence, multi‑channel push.</p>
+        </div>
+
+        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    </div>
+</div>
+
+<script>
+    // 简单语言切换（中英文），不依赖全局 i18n.js，保持独立
+    const langBtn = document.getElementById('langSwitchReport');
+    const zhDiv = document.getElementById('zhContent');
+    const enDiv = document.getElementById('enContent');
+    let currentLang = 'zh';
+
+    function setLanguage(lang) {
+        if (lang === 'zh') {
+            zhDiv.style.display = 'block';
+            enDiv.style.display = 'none';
+            langBtn.textContent = '🌐 English';
+            document.title = '技术深度报告 · 潇楠 Web3 哨兵';
+        } else {
+            zhDiv.style.display = 'none';
+            enDiv.style.display = 'block';
+            langBtn.textContent = '🌐 中文';
+            document.title = 'Technical Deep Dive · XiaoNan Web3 Sentinel';
+        }
+        currentLang = lang;
+    }
+
+    langBtn.addEventListener('click', () => {
+        setLanguage(currentLang === 'zh' ? 'en' : 'zh');
+    });
+
+    // 默认中文
+    setLanguage('zh');
+</script>
+</body>
+</html>
