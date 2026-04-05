@@ -2,12 +2,62 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>技术深度报告 · 潇楠 Web3 哨兵</title>
-    <meta name="description" content="潇楠Web3哨兵系统技术深度报告：架构设计、核心模块、AI集成、多链监控、性能优化等全面解析。">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Web3 双链智能监控系统 · 技术深度报告（2026最新） | 潇 楠 Web3哨兵</title>
+    <meta name="description" content="潇楠Web3哨兵系统技术深度报告：架构设计、核心模块、AI集成、多链监控、性能优化等全面解析。独立开发者深度揭秘企业级区块链监控系统内部实现。">
+    <meta name="keywords" content="Web3监控,区块链监控,多链监控,EVM监控,Solana监控,潇楠Web3哨兵,技术深度报告,链上数据分析,智能合约监控,AI解读交易,加密货币监控,桌面应用,独立开发">
+    <meta name="author" content="潇楠">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.ming.store/tech-report.html">
+    <link rel="alternate" hreflang="zh" href="https://www.ming.store/tech-report.html">
+    <link rel="alternate" hreflang="en" href="https://www.ming.store/tech-report-en.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.ming.store/tech-report.html">
+    <meta property="og:title" content="Web3 双链智能监控系统 · 技术深度报告">
+    <meta property="og:description" content="潇楠Web3哨兵系统技术深度报告：架构设计、核心模块、AI集成、多链监控、性能优化等全面解析。">
+    <meta property="og:image" content="https://www.ming.store/img/1-tic.png">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Web3 双链智能监控系统 · 技术深度报告">
+    <meta name="twitter:description" content="潇楠Web3哨兵系统技术深度报告：架构设计、核心模块、AI集成、多链监控、性能优化等全面解析。">
+    <meta name="twitter:image" content="https://www.ming.store/img/1-tic.png">
+    
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    
+    <!-- 结构化数据 (Schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Web3 双链智能监控系统 · 技术深度报告",
+      "alternativeHeadline": "潇楠Web3哨兵系统内部架构与实现细节",
+      "author": {
+        "@type": "Person",
+        "name": "潇楠",
+        "url": "https://www.ming.store"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "潇楠工作室",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.ming.store/img/logo.png"
+        }
+      },
+      "datePublished": "2026-04-01",
+      "dateModified": "2026-04-05",
+      "description": "潇楠Web3哨兵系统技术深度报告：架构设计、核心模块、AI集成、多链监控、性能优化等全面解析。",
+      "keywords": "Web3监控,多链监控,区块链监控,EVM,Solana,AI解读",
+      "mainEntityOfPage": "https://www.ming.store/tech-report.html",
+      "inLanguage": "zh-CN"
+    }
+    </script>
+    
     <style>
         /* 报告页额外样式 */
         .report-container {
@@ -180,25 +230,6 @@
             font-size: 0.85rem;
             color: #cbd5e1;
         }
-        @media (max-width: 640px) {
-            .report-header h1 { font-size: 1.8rem; }
-            .report-section h2 { font-size: 1.4rem; }
-            .arch-children {
-                flex-direction: column;
-                gap: 0.8rem;
-            }
-            .arch-child {
-                margin-bottom: 0;
-            }
-            .top-bar {
-                left: 0.5rem;
-                right: 0.5rem;
-            }
-            .back-link-top, .lang-switch-report {
-                padding: 0.3rem 0.8rem;
-                font-size: 0.7rem;
-            }
-        }
         /* 新增深度技术列表样式 */
         .depth-list {
             background: #0a0c10;
@@ -223,6 +254,25 @@
             font-family: monospace;
             font-size: 0.85rem;
             color: #facc15;
+        }
+        @media (max-width: 640px) {
+            .report-header h1 { font-size: 1.8rem; }
+            .report-section h2 { font-size: 1.4rem; }
+            .arch-children {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            .arch-child {
+                margin-bottom: 0;
+            }
+            .top-bar {
+                left: 0.5rem;
+                right: 0.5rem;
+            }
+            .back-link-top, .lang-switch-report {
+                padding: 0.3rem 0.8rem;
+                font-size: 0.7rem;
+            }
         }
     </style>
 </head>
