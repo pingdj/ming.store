@@ -21,7 +21,7 @@ const translations = {
         features_sub: '从链上数据到AI解读，再到新项目发现，每一步都为您的资产安全与投资决策服务。',
         f1_title: 'EVM + Solana 双链并行', f1_desc: '支持 Ethereum、BSC、Polygon、Arbitrum、Base 及 Solana 链上实时交易追踪，原生币、ERC20/SPL代币、NFT 变动无遗漏。多WSS节点自动轮换，高可用连接。',
         f2_title: 'AI 深度交易解读', f2_desc: '集成 DeepSeek和Moonshot 大模型，自动分析大额转账、风险评分、资金流向，生成专业交易解读与操作建议。支持情感化评语，让监控更生动。',
-        f3_title: '链上新币雷达 · GeckoTerminal', f3_desc: '实时抓取 Solana、Ethereum、BSC 等链上新上线交易对，展示价格、流动性、成交量，支持 AI 解读项目风险，第一时间发现潜力 Meme 币。',
+        f3_title: '链上新币雷达 · GeckoTerminal & CMC', f3_desc: '实时抓取 Solana、Ethereum、BSC 等链上新上线交易对，展示价格、流动性、成交量，支持 AI 解读项目风险，第一时间发现潜力 Meme 币。',
         f4_title: 'CryptoRank & RootData 新项目', f4_desc: '自动同步 CryptoRank/CMC/GeckoTerminal 最新项目库，RootData 新项目实时推送，附带融资信息、社交链接，帮助您抢占一级市场先机。',
         f5_title: '多端实时推送 + 悬浮窗', f5_desc: 'Telegram、Discord、邮件、语音播报，重磅交易高亮提醒。桌面悬浮窗实时显示资产变动和RootData新项目，不错过任何重要动态。',
         f6_title: '交易仪表盘 + AI 日报/周报', f6_desc: '每日流入/流出统计图表，AI 自动生成投资摘要日报与周报，资产动向可视化，辅助决策。',
@@ -70,7 +70,7 @@ const translations = {
         cl_v9_title: '📊 数据驾驶舱 · 交易仪表盘 + AI 日报/周报',
         cl_v9_desc: '图表化展示每日资金流入/流出，AI 自动生成投资摘要日报与周报，资产动向一目了然，辅助科学决策。',
         cl_v10_title: '✨ 旗舰进化 · 悬浮窗 & 新币雷达 & Web3 AI 助手',
-        cl_v10_desc: '新增桌面悬浮窗实时滚动通知；集成 GeckoTerminal 链上新币雷达，监控新币对并支持 AI 解读；内置 Web3 AI 聊天助手，支持联网搜索与多会话管理。',
+        cl_v10_desc: '新增桌面悬浮窗实时滚动通知；集成 CryptoRank、GeckoTerminal、CoinMarketCap 链上新币雷达，监控新币对并支持 AI 解读；内置 Web3 AI 聊天助手，支持联网搜索与多会话管理。',
         // AI 模块
         ai_title: '🤖 AI 智能助手 · 让链上数据开口说话', ai_sub: '集成深度求索 (DeepSeek) 大模型与 Moonshot 联网搜索，为您提供交易解读、项目分析、每日快评与投资建议。',
         ai_card1_title: '交易解读', ai_card1_desc: '自动识别交易意图，分析风险等级，给出操作建议，帮助您理解链上行为。',
